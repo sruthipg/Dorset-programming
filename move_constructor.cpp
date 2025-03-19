@@ -35,3 +35,11 @@ int main() {
 
     return 0;
 }
+/*
+    Constructor: Allocating 10
+    Move Constructor: Moving resource
+    Destructor: Deleting 10
+    obj1 first allocates memory.
+    move(obj1) transfers ownership to obj2, and obj1.data becomes nullptr.
+    Only obj2 deletes the memory, avoiding duplicate deletions.
+ */

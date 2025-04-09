@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+
 // Template class for Inventory
 template <typename T>
 class Inventory {
@@ -30,7 +31,9 @@ private:
 
 public:
     Clothes(string t, string s) : type(t), size(s) {}
-
+/*
+is used to overload the << operator so you can print user-defined objects (like Clothes, Food, or Electronic) using cout.
+*/
     friend ostream& operator<<(ostream& os, const Clothes& c) {
         os << c.type << " (Size: " << c.size << ")";
         return os;
@@ -92,3 +95,25 @@ int main() {
 
     return 0;
 }
+/*
+Why do we need friend operator<<?
+By default, cout << object; won’t know how to print your custom object because cout only understands built-in types (like int, string, double, etc.).
+
+So, we create a custom definition of how to display our object by overloading the << operator.
+*/
+/*
+But why friend?
+
+friend allows the function to access private members of your class directly, even though it's defined outside the class.
+*/
+
+/*
+Item: T-Shirt (Size: M), Quantity: 30
+Updated Quantity: 40
+-----------------------------
+Item: Apple (Expires: 2025-04-10), Quantity: 100
+Updated Quantity: 80
+-----------------------------
+Item: Samsung Smartphone, Quantity: 15
+Updated Quantity: 20
+*/
